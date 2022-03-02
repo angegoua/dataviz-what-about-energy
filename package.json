@@ -25,10 +25,13 @@
     "singleQuote": true
   },
   "dependencies": {
+    "gsap": "^3.9.1",
     "sass": "^1.49.4",
     "three": "^0.124.0"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.5"
+    "cssnano": "^5.1.0",
+    "parcel-bundler": "^1.12.5",
+    "postcss": "^8.4.7"
   }
 }
