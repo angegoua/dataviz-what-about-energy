@@ -30,6 +30,7 @@ export default class Scene {
         )
         this.camera.position.set(150, 100, 100)
         this.camera.updateProjectionMatrix()
+        this.camera.lookAt(30, 0, 30)
 
         //Controls
 
@@ -54,23 +55,48 @@ export default class Scene {
         this.handleResize()
         this.addRenderer()
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+        this.controls.target = new THREE.Vector3(30, 0, 30)
         window.addEventListener('pointermove', (e) => this.onPointerMove(e))
         // this.controls.enableDamping = true
         this.addTick()
     }
 
     populate() {
+        const group = new THREE.Group()
         const data = require('./../../data.json')
+
+        const colors = [
+            "#ffffff", 
+            "#aaaaaa",
+            "#333333",
+            "#555555",
+            "#444444",
+            "#333333", 
+            "#303030",
+            "#202020",
+            "#111111",
+            "#0f0f0f",
+            "#020202" 
+
+        ]
         data.forEach((d, i) => {
-            //console.log(d.consumption)
-            const h = d.consumption / 1.4
-            let x = (i % 15) * 5
+            let h = Math.log(d.production) * 4
+            h < 1 ? h = .5 : h = h
+            let x = (i % 15) * 5.5
             const y = h / 2
-            const z = (i / 15) * 5
+            const z = (i / 15) * 5.5
             this.bar = new Bar(this.scene, h, d)
             const _this = this.bar
             _this.bar.position.set(x, y, z)
+
+            //Consumption
+            let n = Math.round(d.consumption / (colors.length - 1))
+            n > 10 ? n = 10 : n = n
+            const color = colors[n]
+            _this.bar.material.color = new THREE.Color(color)
         })
+
+        this.scene.add(group)
     }
 
     addLights() {
@@ -80,11 +106,10 @@ export default class Scene {
         )
 
         const hemisphereLight = new THREE.HemisphereLight(
-            0xffffbb,
-            0x080820,
-            1.0
+            0xffffff,
+            0x000000,
+            1
         )
-
         this.scene.add(ambiantLight, hemisphereLight)
     }
 
@@ -129,16 +154,24 @@ export default class Scene {
     }
 
     rayCasterAction() {
-        // update the picking ray with the camera and pointer position
+        document.addEventListener('mousemove', ()=> {
+            // update the picking ray with the camera and pointer position
         this.raycaster.setFromCamera(this.pointer, this.camera)
 
         // calculate objects intersecting the picking ray
         const intersects = this.raycaster.intersectObjects(this.scene.children)
 
         if (intersects.length) {
-            this.currentObject = intersects[0].object.userData.object
+            const el = intersects
+            // el.forEach((_e)=> {
+            //     _e.object.material.color = new THREE.Color(0xffffff)
+            // })
+            // el[0].object.material.color = new THREE.Color(0xD3B82A)
+            this.currentObject = el[0].object.userData.object
+
         } else {
             this.currentObject = null
         }
+        })
     }
 }

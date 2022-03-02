@@ -15,8 +15,8 @@ export default class DataDisplay {
             }
 
             this.countryText.textContent = _newData.country
-            this.productionText.textContent = _newData.production
-            this.consumptionText.textContent = _newData.consumption
+            this.productionText.textContent = _newData.production.toFixed(5)
+            this.consumptionText.textContent = _newData.consumption.toFixed(5)
         }
     }
 }

@@ -408,30 +408,6 @@
         "consumption": 1.1961191624818506
     },
     {
-        "id": "INTL.44-1-CSK-QBTU.A",
-        "country": "Former Czechoslovakia",
-        "production": "--",
-        "consumption": "--"
-    },
-    {
-        "id": "INTL.44-1-SCG-QBTU.A",
-        "country": "Former Serbia and Montenegro",
-        "production": "--",
-        "consumption": "--"
-    },
-    {
-        "id": "INTL.44-1-SUN-QBTU.A",
-        "country": "Former U.S.S.R.",
-        "production": "--",
-        "consumption": "--"
-    },
-    {
-        "id": "INTL.44-1-YUG-QBTU.A",
-        "country": "Former Yugoslavia",
-        "production": "--",
-        "consumption": "--"
-    },
-    {
         "id": "INTL.44-1-FRA-QBTU.A",
         "country": "France",
         "production": 5.139980785934488,
@@ -472,18 +448,6 @@
         "country": "Germany",
         "production": 4.5289234050846785,
         "consumption": 13.533301071094243
-    },
-    {
-        "id": "INTL.44-1-DDR-QBTU.A",
-        "country": "Germany, East",
-        "production": "--",
-        "consumption": "--"
-    },
-    {
-        "id": "INTL.44-1-DEUW-QBTU.A",
-        "country": "Germany, West",
-        "production": "--",
-        "consumption": "--"
     },
     {
         "id": "INTL.44-1-GHA-QBTU.A",
@@ -556,12 +520,6 @@
         "country": "Haiti",
         "production": 0.001193136,
         "consumption": 0.044718044
-    },
-    {
-        "id": "INTL.44-1-HITZ-QBTU.A",
-        "country": "Hawaiian Trade Zone",
-        "production": "--",
-        "consumption": "--"
     },
     {
         "id": "INTL.44-1-HND-QBTU.A",
